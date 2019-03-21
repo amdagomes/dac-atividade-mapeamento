@@ -5,11 +5,12 @@
     <groupId>com.ifpb</groupId>
     <artifactId>dac-atividade-mapeamento</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>dac-atividade-mapeamenton</name>
+    <name>dac-atividade-mapeamento</name>
     <packaging>pom</packaging>
     
     <modules>
         <module>cenario1</module>
+        <module>cenario3</module>
     </modules>
     <repositories>
         <repository>
