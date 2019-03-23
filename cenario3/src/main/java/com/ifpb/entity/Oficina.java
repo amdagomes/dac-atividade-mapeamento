@@ -1,10 +1,15 @@
 package com.ifpb.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,7 +26,13 @@ public class Oficina implements Serializable{
     private String cidade;
     private double saldo;
     
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Funcionario> funcionarios;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "oficina")
+    private List<Conserto> consertos;
+    
     public Oficina(String rua, String bairro, String cidade, double saldo) {
+        this();
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -29,6 +40,8 @@ public class Oficina implements Serializable{
     }
 
     public Oficina() {
+        this.funcionarios = new ArrayList<>();
+        this.consertos = new ArrayList<>();
     }
 
     public int getId() {
@@ -70,5 +83,21 @@ public class Oficina implements Serializable{
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Conserto> getConsertos() {
+        return consertos;
+    }
+
+    public void setConsertos(List<Conserto> consertos) {
+        this.consertos = consertos;
+    }
+        
 }

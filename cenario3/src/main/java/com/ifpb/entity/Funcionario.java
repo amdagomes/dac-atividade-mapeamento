@@ -1,14 +1,12 @@
 package com.ifpb.entity;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -26,20 +24,16 @@ public class Funcionario implements Serializable{
     private double salario;
     @Enumerated(EnumType.STRING)
     private Funcao funcao;
-    
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Oficina oficina;
 
-    public Funcionario(String nome, String cpf, String rg, double salario, Funcao funcao, Oficina oficina) {
+    public Funcionario() {
+    }
+
+    public Funcionario(String nome, String cpf, String rg, double salario, Funcao funcao) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.salario = salario;
         this.funcao = funcao;
-        this.oficina = oficina;
-    }
-
-    public Funcionario() {
     }
 
     public int getId() {
@@ -90,12 +84,4 @@ public class Funcionario implements Serializable{
         this.funcao = funcao;
     }
 
-    public Oficina getOficina() {
-        return oficina;
-    }
-
-    public void setOficina(Oficina oficina) {
-        this.oficina = oficina;
-    }
-    
 }
